@@ -8,9 +8,9 @@ COPY go.mod go.sum main.go /reearth/
 WORKDIR /reearth
 RUN go mod download
 
-COPY cmd/ /reearth/cmd/
-COPY pkg/ /reearth/pkg/
-COPY internal/ /reearth/internal/
+COPY cmd/ /reearth/server/cmd/
+COPY pkg/ /reearth/server/pkg/
+COPY internal/ /reearth/server/internal/
 
 RUN CGO_ENABLED=0 go build -tags "${TAG}" "-ldflags=-X main.version=${VERSION} -s -w -buildid=" -trimpath ./cmd/reearth
 
